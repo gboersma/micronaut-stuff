@@ -16,3 +16,12 @@ the same pattern for managing the ApplicationContext.
 ## client
 
 Client UI as SPA implemented in Angular + material. 
+
+## Background and Status
+
+Currently a work-in-progress. Any comments welcome.
+
+Although this was written to demonstrate Micronaut and the RESTful server / static 
+client pattern, it is intended to be a complete service that is suitable for 
+production. It is written based on my experience with Spring Boot / Cloud in a 
+production deployment.
