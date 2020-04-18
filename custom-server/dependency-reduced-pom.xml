@@ -175,12 +175,6 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>info.leadinglight.micronaut.jobs</groupId>
-        <artifactId>server</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
         <groupId>io.micronaut</groupId>
         <artifactId>micronaut-bom</artifactId>
         <version>${micronaut.version}</version>
