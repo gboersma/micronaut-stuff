@@ -1,0 +1,27 @@
+target/
+derby.log
+
+### Sourcetree ###
+*.diff
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.tern-project
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Visual Code ###
+.vscode/
+
+### Mac/OSX ###
+.DS_Store
