@@ -1,3 +1,23 @@
 micronaut:
   application:
     name: server
+datasources:
+  # Replace with any database you are using. Can be H2.
+  default:
+    url: jdbc:mariadb://localhost/mjobs
+    username: mjobs
+    password: mjobs
+    driverClassName: org.mariadb.jdbc.Driver
+jpa:
+  default:
+    packages-to-scan:
+      - 'info.leadinglight.micronaut.jobs'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+        show_sql: true
+flyway:
+  datasources:
+    default:
+      locations: classpath:dbase
