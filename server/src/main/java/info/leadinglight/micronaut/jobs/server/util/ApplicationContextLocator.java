@@ -1,4 +1,4 @@
-package info.leadinglight.micronaut.jobs.server;
+package info.leadinglight.micronaut.jobs.server.util;
 
 import io.micronaut.context.ApplicationContext;
 

@@ -1,5 +1,6 @@
 package info.leadinglight.micronaut.jobs.server;
 
+import info.leadinglight.micronaut.jobs.server.util.ApplicationContextLocator;
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.event.ApplicationEventListener;
 import io.micronaut.runtime.Micronaut;

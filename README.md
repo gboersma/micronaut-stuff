@@ -13,7 +13,12 @@ directly through the Java API.
 If combined with another application, the main application class needs to follow
 the same pattern for managing the ApplicationContext.
 
-## client
+## custom-server
+
+Demonstrates how to extend the server application with custom jobs and other
+custom behaviour.
+
+## ui
 
 Client UI as SPA implemented in Angular + material. 
 
