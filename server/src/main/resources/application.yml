@@ -4,10 +4,10 @@ micronaut:
 datasources:
   # Replace with any database you are using. Can be H2.
   default:
-    url: jdbc:h2:file:./h2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MVCC=TRUE
-    username: sa
-    password: ""
-    driverClassName: org.h2.Driver
+    url: jdbc:mariadb://localhost/mjobs
+    username: mjobs
+    password: mjobs
+    driverClassName: org.mariadb.jdbc.Driver
 jpa:
   default:
     packages-to-scan:
@@ -20,6 +20,4 @@ jpa:
 flyway:
   datasources:
     default:
-      # Sub-folders with numbers in them will not get properly configured.
-      # We need to call the H2 htwo instead. Probably issue with flyway.
-      locations: classpath:dbase/htwo
+      locations: classpath:dbase
