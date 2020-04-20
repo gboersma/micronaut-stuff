@@ -20,13 +20,8 @@ import java.util.Map;
 public class JobsRestController {
     // TODO Document with Swagger.
 
-    @Get
-    public String root() {
-        return "\"micronaut-jobs\"";
-    }
-
     // TODO Query the jobs: by status (active, completed, aborted), timestamp, type (i.e. it's definition).
-    @Get("/query")
+    @Get
     public List<JobDTO> queryJobs() {
         Jobs jobs = jobManager.getAllJobs();
 
@@ -42,7 +37,7 @@ public class JobsRestController {
     }
 
     // TODO See the detail for a job.
-    @Get("/detail/{jobId}")
+    @Get("/{jobId}")
     public void getJobDetails(@PathVariable("jobId") String jobId) {
         // TODO Query the database for the specified job.
         //  Separate table from Quartz tables.
@@ -51,17 +46,11 @@ public class JobsRestController {
     }
 
     // TODO Get the log for a job.
-    @Get("/log/{jobId}")
+    @Get("/{jobId}/log")
     public void getJobLog(@PathVariable("jobId") String jobId) {
         // TODO Query the database for the specified job.
         //  Get the log file. Return it as plain-text content.
         throw new NotImplementedException("get log for job " + jobId);
-    }
-
-    // TODO Kick off a Job immediately.
-    @Post("/launch/{jobConfigId}")
-    public String launchJob(@PathVariable("jobConfigId") String jobConfigId, @Body Map<String,Object> variables) {
-        throw new NotImplementedException("launch job " + jobConfigId + " with variables " + variables);
     }
 
     // TODO Stop a job.
@@ -70,24 +59,11 @@ public class JobsRestController {
         throw new NotImplementedException("stop job " + jobId);
     }
 
-    // TODO Query the job schedule.
-    @Get("/schedule")
-    public void querySchedule() {
-        throw new NotImplementedException("query the job schedule");
+    // TODO Kick off a Job immediately.
+    @Post("/launch/{jobConfigId}")
+    public String launchJob(@PathVariable("jobConfigId") String jobConfigId, @Body Map<String,Object> variables) {
+        throw new NotImplementedException("launch job " + jobConfigId + " with variables " + variables);
     }
-
-    // TODO Get the details for a scheduled job, including stats.
-
-
-    // TODO Schedule a job.
-    // TODO Modify the schedule for a job.
-    // TODO Remove a job from the schedule.
-    // TODO Disable a scheduled job.
-    // TODO Query the audit log: by job id.
-    // TODO Clear out completed jobs, i.e. no longer see them in the list; including the log files.
-
-    // TODO All queries support paging through the results.
-    //  Return a maximum number of results.
 
     @Inject
     private JobManager jobManager;
