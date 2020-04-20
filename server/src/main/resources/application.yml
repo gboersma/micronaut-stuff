@@ -20,4 +20,6 @@ jpa:
 flyway:
   datasources:
     default:
-      locations: classpath:dbase
+      # Sub-folders with numbers in them will not get properly configured.
+      # We need to call the H2 htwo instead. Probably issue with flyway.
+      locations: classpath:dbase/htwo
