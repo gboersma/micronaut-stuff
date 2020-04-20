@@ -1,5 +1,5 @@
 profile: service
-defaultPackage: server
+defaultPackage: jobs.core
 ---
 testFramework: junit
 sourceLanguage: java

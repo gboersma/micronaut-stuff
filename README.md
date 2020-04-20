@@ -1,24 +1,33 @@
-# micronaut-jobs
+# micronaut-job
 
-A service for managing background jobs for a micronaut application.
-Can be deployed as a stand-alone REST service or combined with another micronaut
-application through an API. Provides a UI that calls the service through the REST api.
+Components for managing background jobs in Micronaut.
 
-## server
+## job-scheduler
 
-Stand-alone Micronaut application. Provides a REST api as well as a Java API.
+Takes care of scheduling and executing jobs across multiple servers. 
 
-Includes integration with Quartz, which provides co-ordination of jobs across 
-multiple server instances.
+Micronaut provides support for managing tasks, but it is limited to a single server with no 
+co-ordination across multiple servers.
 
-## custom-server
+Similar approach as Quartz, but rewritten for Micronaut: no reflection, 
+cleaner database schema, support for Beans, etc. 
 
-Demonstrates how to extend the server application with custom jobs and other
-custom behaviour.
+## job-audit
 
-## ui
+Provides support for viewing details of jobs currently executing or have completed
+execution.
 
-Client UI as SPA implemented in Angular + material. 
+## job-logging
+
+Provides a logging mechanism for jobs.
+
+## job-rest
+
+Provides rest controllers.
+
+## job-ui
+
+Provides a static UI for managing jobs and the schedule.
 
 ## Background and Status
 
