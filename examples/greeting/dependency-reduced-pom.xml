@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>info.leadinglight.micronaut.job</groupId>
-  <artifactId>job-scheduler</artifactId>
+  <groupId>info.leadinglight.micronaut-job.examples</groupId>
+  <artifactId>greeting</artifactId>
   <version>1.0-SNAPSHOT</version>
   <build>
     <pluginManagement>
@@ -190,7 +190,7 @@
     <maven.compiler.target>${jdk.version}</maven.compiler.target>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <exec.mainClass>info.leadinglight.mjob.jobs.core.Application</exec.mainClass>
+    <exec.mainClass>info.leadinglight.mjob.greeting.Application</exec.mainClass>
     <jdk.version>1.8</jdk.version>
     <maven.compiler.source>${jdk.version}</maven.compiler.source>
   </properties>

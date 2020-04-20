@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: greeting
+---
+testFramework: junit
+sourceLanguage: java
