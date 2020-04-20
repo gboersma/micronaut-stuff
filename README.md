@@ -7,11 +7,9 @@ application through an API. Provides a UI that calls the service through the RES
 ## server
 
 Stand-alone Micronaut application. Provides a REST api as well as a Java API.
-Can also be included in another Micronaut application as a JAR file, and accessed
-directly through the Java API.
 
-If combined with another application, the main application class needs to follow
-the same pattern for managing the ApplicationContext.
+Includes integration with Quartz, which provides co-ordination of jobs across 
+multiple server instances.
 
 ## custom-server
 

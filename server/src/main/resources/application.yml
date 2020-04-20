@@ -4,10 +4,10 @@ micronaut:
 datasources:
   # Replace with any database you are using. Can be H2.
   default:
-    url: jdbc:mariadb://localhost/mjobs
-    username: mjobs
-    password: mjobs
-    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:h2:file:./h2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ""
+    driverClassName: org.h2.Driver
 jpa:
   default:
     packages-to-scan:

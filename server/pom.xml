@@ -43,11 +43,10 @@
             <artifactId>micronaut-jdbc-hikari</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- Replace with whatever database you are using; can be H2. -->
         <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>2.6.0</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <!--
             Let's use the latest version of Flyway.
