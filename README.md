@@ -12,7 +12,7 @@ co-ordination across multiple servers.
 Similar approach as Quartz, but rewritten for Micronaut: no reflection, 
 cleaner database schema, support for Beans, etc. 
 
-## job-audit
+## job-history
 
 Provides support for viewing details of jobs currently executing or have completed
 execution.

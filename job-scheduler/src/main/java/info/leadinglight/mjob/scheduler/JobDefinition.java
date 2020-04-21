@@ -1,5 +1,6 @@
 package info.leadinglight.mjob.scheduler;
 
-public interface Job {
+public interface JobDefinition {
+    String getName();
     void execute(JobArguments args);
 }

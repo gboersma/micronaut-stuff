@@ -8,34 +8,45 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Collection;
+import java.util.List;
 
 @Singleton
 public class JobScheduler {
-    public void scheduleJob(String cron, Class<? extends Job> jobBeanType) {
-        logger.info("I am scheduling a Job...");
+    public ScheduledJob scheduleJob(String cron, Class<? extends JobDefinition> jobBeanType, JobArguments args) {
+        JobDefinition jobDefinitionBean = applicationContext.getBean(jobBeanType);
+        BeanDefinition<? extends JobDefinition> beanDef = applicationContext.getBeanDefinition(jobBeanType);
+        ScheduledJob scheduledJob = new ScheduledJob();
+        scheduledJob.setName(jobDefinitionBean.getName());
+        scheduledJob.setDefinition(beanDef.getName());
+        scheduledJob.setArgs(args);
+        return jobScheduleManager.create(scheduledJob);
     }
 
-    public void executeJob(Class<? extends Job> jobBeanType) {
+    public ScheduledJob getScheduledJob(String id) {
+        return jobScheduleManager.get(id);
+    }
+
+    public void executeJob(Class<? extends JobDefinition> jobBeanType) {
         JobArguments args = new JobArguments();
         executeJob(jobBeanType, args);
     }
 
-    public void executeJob(Class<? extends Job> jobBeanType, JobArguments args) {
-        Job jobBean = applicationContext.getBean(jobBeanType);
+    public void executeJob(Class<? extends JobDefinition> jobBeanType, JobArguments args) {
+        JobDefinition jobDefinitionBean = applicationContext.getBean(jobBeanType);
         logger.info("I am executing a job...");
-        jobBean.execute(args);
+        jobDefinitionBean.execute(args);
     }
 
     public void executeJob(String className, JobArguments args) {
-        Class<? extends Job> jobBeanType = getJobBeanTypeByClassName(className);
+        Class<? extends JobDefinition> jobBeanType = getJobBeanTypeByClassName(className);
         if (jobBeanType == null) {
             throw new JobException("Job for class " + className + " not defined");
         }
         executeJob(jobBeanType, args);
     }
 
-    public Class<? extends Job> getJobBeanTypeByClassName(String className) {
-        Collection<BeanDefinition<Job>> jobBeanDefs = applicationContext.getBeanDefinitions(Job.class);
+    public Class<? extends JobDefinition> getJobBeanTypeByClassName(String className) {
+        Collection<BeanDefinition<JobDefinition>> jobBeanDefs = applicationContext.getBeanDefinitions(JobDefinition.class);
         for (BeanDefinition jobBeanDef: jobBeanDefs) {
             if (jobBeanDef.getName() != null && jobBeanDef.getName().equals(className)) {
                 return jobBeanDef.getBeanType();
@@ -44,8 +55,18 @@ public class JobScheduler {
         return null;
     }
 
+    public void executeJobs() {
+        List<ScheduledJob> scheduledJobs = jobScheduleManager.getAll();
+        for (ScheduledJob scheduledJob: scheduledJobs) {
+            executeJob(scheduledJob.getDefinition(), scheduledJob.getArgs());
+        }
+    }
+
     @Inject
     private ApplicationContext applicationContext;
+
+    @Inject
+    private JobScheduleManager jobScheduleManager;
 
     private Logger logger = LoggerFactory.getLogger(JobScheduler.class);
 }

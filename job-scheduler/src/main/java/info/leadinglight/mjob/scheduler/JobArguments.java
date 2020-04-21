@@ -16,5 +16,13 @@ public class JobArguments {
         args.put(name, value);
     }
 
+    public Map<String, Object> getArgs() {
+        return args;
+    }
+
+    public void setArgs(Map<String, Object> args) {
+        this.args = args;
+    }
+
     private Map<String,Object> args = new HashMap<>();
 }

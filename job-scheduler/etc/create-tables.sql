@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS job_schedule (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(250) NOT NULL,
+    definition VARCHAR(250) NOT NULL,
+    args_json TEXT
+) engine=InnoDB;
