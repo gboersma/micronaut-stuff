@@ -13,7 +13,7 @@ public class JobEventListener {
     public void onStartupEvent(StartupEvent event) {
         if (jobManager.isEnabled()) {
             logger.info("Starting the Quartz scheduler...");
-            jobManager.getScheduler().start();
+            jobManager.getQuartzScheduler().start();
         }
     }
 
@@ -21,7 +21,7 @@ public class JobEventListener {
     public void onShutdownEvent(ShutdownEvent event) {
         if (jobManager.isEnabled()) {
             logger.info("Shutting down the Quartz scheduler...");
-            jobManager.getScheduler().shutdown();
+            jobManager.getQuartzScheduler().shutdown();
         }
     }
 

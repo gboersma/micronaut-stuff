@@ -11,16 +11,16 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class JobManager {
-    public QuartzScheduler getScheduler() {
-        return quartzScheduler;
+    public boolean isEnabled() {
+        return jobConfig.isEnabled();
     }
 
     public boolean isJobScheduled(JobKey jobKey, TriggerKey triggerKey) {
         return quartzScheduler.checkExists(jobKey) && quartzScheduler.checkExists(triggerKey);
     }
 
-    public boolean isEnabled() {
-        return jobConfig.isEnabled();
+    public QuartzScheduler getQuartzScheduler() {
+        return quartzScheduler;
     }
 
     @Inject

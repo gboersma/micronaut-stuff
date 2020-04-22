@@ -3,7 +3,6 @@ package info.leadinglight.mjob.greeting;
 import info.leadinglight.mjob.scheduler.JobManager;
 import io.micronaut.context.event.ApplicationEventListener;
 import io.micronaut.discovery.event.ServiceStartedEvent;
-import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.Trigger;
@@ -34,7 +33,7 @@ public class GreetingScheduler implements ApplicationEventListener<ServiceStarte
                     .withIntervalInSeconds(5)
                     .repeatForever())
                 .build();
-            jobManager.getScheduler().scheduleJob(job, trigger);
+            jobManager.getQuartzScheduler().scheduleJob(job, trigger);
         }
     }
 

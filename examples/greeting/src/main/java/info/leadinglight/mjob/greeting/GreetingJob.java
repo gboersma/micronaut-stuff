@@ -5,6 +5,9 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class GreetingJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext)
