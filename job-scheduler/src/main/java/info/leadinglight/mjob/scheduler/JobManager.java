@@ -19,6 +19,13 @@ public class JobManager {
         return quartzScheduler.checkExists(jobKey) && quartzScheduler.checkExists(triggerKey);
     }
 
+    public boolean isEnabled() {
+        return jobConfig.isEnabled();
+    }
+
     @Inject
     private QuartzScheduler quartzScheduler;
+
+    @Inject
+    private JobConfiguration jobConfig;
 }

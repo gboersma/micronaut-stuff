@@ -18,6 +18,24 @@ import java.util.Date;
  */
 @Singleton
 public class QuartzScheduler {
+    public void start() {
+        try {
+            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+            scheduler.start();
+        } catch (SchedulerException e) {
+            throw new JobException("could not start scheduler", e);
+        }
+    }
+
+    public void shutdown() {
+        try {
+            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+            scheduler.shutdown();
+        } catch (SchedulerException e) {
+            throw new JobException("could not shutdown scheduler", e);
+        }
+    }
+
     public Date scheduleJob(JobDetail jobDetail, Trigger trigger) {
         try {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();

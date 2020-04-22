@@ -1,8 +1,10 @@
 + Integrate Quartz.
-- Ability to turn Quartz integration on and off via a property setting.
++ Add enabled property to enable / disable Quartz.
+- Cleaner interface for defining new jobs: use Micronaut beans, not simple classes.
+- Test to see if we can access database e.g. JPA from within a job. Same transaction boundaries issue as Spring?
+- Cleaner API for scheduling jobs.
 - Ability to delete all existing jobs and re-create them.
 -- Solves issues with old jobs / triggers refiring / Java serialization.
 -- Need to figure out how to have one server do this, and not all servers.
--- Some sort of versioning?
-- Cleaner interface for defining new jobs: use Micronaut beans, not simple classes.
-- Cleaner API for scheduling jobs.
+-- Some sort of job versioning?
+- Manage quartz properties in application.yml

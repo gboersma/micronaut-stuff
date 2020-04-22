@@ -1,3 +1,5 @@
 micronaut:
   application:
     name: greeting
+job:
+  enabled: true
