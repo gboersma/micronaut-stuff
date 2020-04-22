@@ -1,2 +1,8 @@
 + Integrate Quartz.
+- Ability to turn Quartz integration on and off via a property setting.
+- Ability to delete all existing jobs and re-create them.
+-- Solves issues with old jobs / triggers refiring / Java serialization.
+-- Need to figure out how to have one server do this, and not all servers.
+-- Some sort of versioning?
 - Cleaner interface for defining new jobs: use Micronaut beans, not simple classes.
+- Cleaner API for scheduling jobs.

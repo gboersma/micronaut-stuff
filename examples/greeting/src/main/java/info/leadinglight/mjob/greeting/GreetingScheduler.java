@@ -3,6 +3,7 @@ package info.leadinglight.mjob.greeting;
 import info.leadinglight.mjob.scheduler.JobManager;
 import io.micronaut.context.event.ApplicationEventListener;
 import io.micronaut.discovery.event.ServiceStartedEvent;
+import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.Trigger;
@@ -23,6 +24,7 @@ public class GreetingScheduler implements ApplicationEventListener<ServiceStarte
         if (!jobManager.isJobScheduled(jobKey, triggerKey)) {
             JobDetail job = newJob(GreetingJob.class)
                 .withIdentity(jobKey)
+                .usingJobData("name", "Harry")
                 .build();
             // Trigger the job to run now, and then repeat every 40 seconds
             Trigger trigger = newTrigger()
