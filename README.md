@@ -4,13 +4,15 @@ Components for managing background jobs in Micronaut.
 
 ## job-scheduler
 
-Takes care of scheduling and executing jobs across multiple servers. 
+Takes care of scheduling and executing jobs across multiple servers using Quartz. 
 
 Micronaut provides support for managing tasks, but it is limited to a single server with no 
 co-ordination across multiple servers.
 
-Similar approach as Quartz, but rewritten for Micronaut: no reflection, 
-cleaner database schema, support for Beans, etc. 
+Extends Quartz with improvements for Micronaut:
+* Quartz properties as standard Micronaut properties.
+* Define jobs using Micronaut beans; no reflection for instantiating jobs.
+* Serialize job arguments in the database using JSON, not Java serialization.
 
 ## job-history
 

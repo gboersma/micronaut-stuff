@@ -1,19 +1,16 @@
 package info.leadinglight.mjob.greeting;
 
-import info.leadinglight.mjob.scheduler.JobDefinition;
-import info.leadinglight.mjob.scheduler.JobArguments;
-import io.micronaut.context.annotation.Prototype;
+import org.quartz.Job;
+import org.quartz.JobDataMap;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 
-@Prototype
-public class GreetingJob implements JobDefinition {
+public class GreetingJob implements Job {
     @Override
-    public String getName() {
-        return "greeting";
-    }
-
-    @Override
-    public void execute(JobArguments args) {
-        Object name = args.get("name", "world");
+    public void execute(JobExecutionContext jobExecutionContext)
+        throws JobExecutionException {
+        JobDataMap args = jobExecutionContext.getJobDetail().getJobDataMap();
+        String name = args.getString("name") != null ? args.getString("name") : "world";
         System.out.println("Hello " + name + ", from the greeting job!");
     }
 }

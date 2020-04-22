@@ -1,4 +1,4 @@
-CREATE DATABASE mjobs;
-CREATE USER 'mjobs'@'localhost' IDENTIFIED BY 'mjobs';
-GRANT ALL ON mjobs.* TO 'mjobs'@'localhost';
+CREATE DATABASE mjob;
+CREATE USER 'mjob'@'localhost' IDENTIFIED BY 'mjob';
+GRANT ALL ON mjob.* TO 'mjob'@'localhost';
 flush privileges;

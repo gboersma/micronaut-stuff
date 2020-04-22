@@ -1,12 +1,2 @@
-Break this into modules:
-- job-scheduler: Mechanism for scheduling jobs across a cluster (i.e. Quartz replacement), query/manage the schedule.
-- job-audit: Get all the details for jobs that are running / have run.
-- job-logging: Support for logging for jobs
-- job-rest: Rest controllers for accessing the jobs / schedule.
-- job-ui: Static pages for accessing REST service.
-- examples
--- hello-scheduler: application that schedules jobs across multiple instances in cluster.
-
-Clients can include the components that they want to use.
-
-Review Quartz and come up with design for scheduler.
++ Integrate Quartz.
+- Cleaner interface for defining new jobs: use Micronaut beans, not simple classes.

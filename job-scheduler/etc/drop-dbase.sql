@@ -1,3 +1,3 @@
-drop database if exists mjobs;
-drop user if exists 'mjobs'@'localhost';
+drop database if exists mjob;
+drop user if exists 'mjob'@'localhost';
 flush privileges;

@@ -1,29 +1,41 @@
 package info.leadinglight.mjob.greeting;
 
-import info.leadinglight.mjob.scheduler.JobArguments;
-import info.leadinglight.mjob.scheduler.JobScheduler;
-import info.leadinglight.mjob.scheduler.ScheduledJob;
+import info.leadinglight.mjob.scheduler.JobManager;
 import io.micronaut.context.event.ApplicationEventListener;
 import io.micronaut.discovery.event.ServiceStartedEvent;
+import org.quartz.JobDetail;
+import org.quartz.JobKey;
+import org.quartz.Trigger;
+import org.quartz.TriggerKey;
+
+import static org.quartz.JobBuilder.*;
+import static org.quartz.TriggerBuilder.*;
+import static org.quartz.SimpleScheduleBuilder.*;
 
 import javax.inject.Inject;
 
 public class GreetingScheduler implements ApplicationEventListener<ServiceStartedEvent> {
     @Override
     public void onApplicationEvent(ServiceStartedEvent event) {
-        jobScheduler.executeJob(GreetingJob.class);
-        JobArguments args = new JobArguments();
-        args.put("name", "Harry");
-        jobScheduler.executeJob(GreetingJob.class, args);
-        jobScheduler.executeJob(GreetingJob.class.getName(), args);
-
-        ScheduledJob scheduledJob = jobScheduler.scheduleJob("bleah", GreetingJob.class, args);
-        System.out.println(scheduledJob);
-        ScheduledJob scheduledJob2 = jobScheduler.getScheduledJob(scheduledJob.getId());
-        System.out.println(scheduledJob2);
-        jobScheduler.executeJobs();
+        JobKey jobKey = new JobKey("job1", "group1");
+        TriggerKey triggerKey = new TriggerKey("trigger1", "group1");
+        // Only schedule the job if it is not yet scheduled.
+        if (!jobManager.isJobScheduled(jobKey, triggerKey)) {
+            JobDetail job = newJob(GreetingJob.class)
+                .withIdentity(jobKey)
+                .build();
+            // Trigger the job to run now, and then repeat every 40 seconds
+            Trigger trigger = newTrigger()
+                .withIdentity(triggerKey)
+                .startNow()
+                .withSchedule(simpleSchedule()
+                    .withIntervalInSeconds(5)
+                    .repeatForever())
+                .build();
+            jobManager.getScheduler().scheduleJob(job, trigger);
+        }
     }
 
     @Inject
-    private JobScheduler jobScheduler;
+    private JobManager jobManager;
 }
