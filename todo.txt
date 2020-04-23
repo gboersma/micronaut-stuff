@@ -1,11 +1,11 @@
+=== job-scheduler ===
+
 + Integrate Quartz.
 + Add enabled property to enable / disable Quartz.
 + Create new Jobs as Micronaut beans, so the jobs can use all Micronaut features.
 + Demonstrate that job beans can do JPA, with no transaction boundary issues like Spring.
 + Add some builder helpers- slightly more concise syntax for getting builders.
-- Manage quartz properties in application.yml
--- Integrate with application's JPA settings.
--- Auto-defaults for MicronautJobFactory.
++ Manage quartz properties in application.yml
 
 Later:
 - Track down where Quartz uses Java reflection, and investigate how to replace.
@@ -14,3 +14,6 @@ Later:
 -- Solves issues with old jobs / triggers refiring / Java serialization.
 -- Need to figure out how to have one server do this, and not all servers.
 -- Some sort of job versioning?
+
+=== job-rest ===
+
