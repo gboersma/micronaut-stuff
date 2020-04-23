@@ -5,6 +5,8 @@
 - Manage quartz properties in application.yml
 -- Integrate with application's JPA settings.
 -- Auto-defaults for MicronautJobFactory.
+
+Later:
 - Track down where Quartz uses Java reflection, and investigate how to replace.
 -- Can provide own implementation of SchedulerFactory that does not use reflection.
 - Ability to delete all existing jobs and re-create them.
