@@ -3,3 +3,16 @@ micronaut:
     name: greeting
 job:
   enabled: true
+datasources:
+  default:
+    url: jdbc:mariadb://localhost/mjob
+    username: mjob
+    password: mjob
+    driverClassName: org.mariadb.jdbc.Driver
+jpa:
+  default:
+    entity-scan:
+      packages: 'info.leadinglight'
+    properties:
+      hibernate:
+        show_sql: true
