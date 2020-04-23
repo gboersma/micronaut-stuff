@@ -10,9 +10,15 @@ Micronaut provides support for managing tasks, but it is limited to a single ser
 co-ordination across multiple servers.
 
 Extends Quartz with improvements for Micronaut:
+* Implement Quartz jobs with Micronaut beans that support Micronaut injection.
 * Quartz properties as standard Micronaut properties.
-* Define jobs using Micronaut beans; no reflection for instantiating jobs.
+
+In the future:
 * Serialize job arguments in the database using JSON, not Java serialization.
+* Replace Quartz's use of reflection for better GraalVM support.
+* Better management of the schedule, e.g. scheduling / rescheduling jobs, version of jobs, etc.
+
+Why use Quartz? Because it is solid, easily extensible, and everyone knows how to use it.
 
 ## job-history
 
@@ -36,6 +42,6 @@ Provides a static UI for managing jobs and the schedule.
 Currently a work-in-progress. Any comments welcome.
 
 Although this was written to demonstrate Micronaut and the RESTful server / static 
-client pattern, it is intended to be a complete service that is suitable for 
+client pattern, it is intended to be a complete component that is suitable for 
 production. It is written based on my experience with Spring Boot / Cloud in a 
 production deployment.
