@@ -1,4 +1,4 @@
-=== job-scheduler ===
+=== job-quartz ===
 
 + Integrate Quartz.
 + Add enabled property to enable / disable Quartz.

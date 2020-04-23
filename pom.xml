@@ -8,6 +8,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>job-scheduler</module>
+        <module>job-quartz</module>
     </modules>
 </project>
