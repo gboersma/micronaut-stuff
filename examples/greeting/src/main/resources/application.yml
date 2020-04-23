@@ -23,16 +23,11 @@ job:
           skipUpdateCheck: true
           instanceName: DatabaseScheduler
           instanceId: NON_CLUSTERED
-          jobFactory:
-            class: info.leadinglight.mjob.scheduler.MicronautJobFactory
         jobStore:
           class: org.quartz.impl.jdbcjobstore.JobStoreTX
           driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
           dataSource: quartzDataSource
           tablePrefix: QRTZ_
-        threadPool:
-          class: org.quartz.simpl.SimpleThreadPool
-          threadCount: 5
         dataSource:
           quartzDataSource:
             driver: org.mariadb.jdbc.Driver
@@ -40,3 +35,6 @@ job:
             user: mjob
             password: mjob
             maxConnections: 8
+        threadPool:
+          class: org.quartz.simpl.SimpleThreadPool
+          threadCount: 5
