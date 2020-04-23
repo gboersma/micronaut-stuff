@@ -1,8 +1,6 @@
 micronaut:
   application:
     name: greeting
-job:
-  enabled: true
 datasources:
   default:
     url: jdbc:mariadb://localhost/mjob
@@ -16,3 +14,29 @@ jpa:
     properties:
       hibernate:
         show_sql: true
+job:
+  enabled: true
+  quartz:
+    org:
+      quartz:
+        scheduler:
+          skipUpdateCheck: true
+          instanceName: DatabaseScheduler
+          instanceId: NON_CLUSTERED
+          jobFactory:
+            class: info.leadinglight.mjob.scheduler.MicronautJobFactory
+        jobStore:
+          class: org.quartz.impl.jdbcjobstore.JobStoreTX
+          driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+          dataSource: quartzDataSource
+          tablePrefix: QRTZ_
+        threadPool:
+          class: org.quartz.simpl.SimpleThreadPool
+          threadCount: 5
+        dataSource:
+          quartzDataSource:
+            driver: org.mariadb.jdbc.Driver
+            URL: jdbc:mariadb://localhost/mjob
+            user: mjob
+            password: mjob
+            maxConnections: 8
