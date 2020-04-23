@@ -1,5 +1,6 @@
 package info.leadinglight.mjob.scheduler;
 
+import org.quartz.Job;
 import org.quartz.JobKey;
 import org.quartz.TriggerKey;
 
@@ -21,6 +22,10 @@ public class JobManager {
 
     public QuartzScheduler getQuartzScheduler() {
         return quartzScheduler;
+    }
+
+    public void validateJobClass(Class<? extends Job> jobClass) {
+        MicronautLocator.getJobBean(jobClass);
     }
 
     @Inject

@@ -1,7 +1,7 @@
 + Integrate Quartz.
 + Add enabled property to enable / disable Quartz.
-- Test to see if we can access database e.g. JPA from within a job. Same transaction boundaries issue as Spring?
-- Cleaner interface for defining new jobs: use Micronaut beans, not simple classes. Avoid builders for simple cases.
++ Create new Jobs as Micronaut beans, so the jobs can use all Micronaut features.
+- Can job beans do JPA? Transaction boundary issues like Spring?
 - Manage quartz properties in application.yml
 - Track down where Quartz uses Java reflection, and investigate how to replace.
 -- Can provide own implementation of SchedulerFactory that does not use reflection.

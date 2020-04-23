@@ -17,6 +17,9 @@ import javax.inject.Inject;
 public class GreetingScheduler implements ApplicationEventListener<ServiceStartedEvent> {
     @Override
     public void onApplicationEvent(ServiceStartedEvent event) {
+        // Validate that the Greeting Job is a valid micronaut beans.
+        jobManager.validateJobClass(GreetingJob.class);
+        // Schedule the job.
         JobKey jobKey = new JobKey("job1", "group1");
         TriggerKey triggerKey = new TriggerKey("trigger1", "group1");
         // Only schedule the job if it is not yet scheduled.
@@ -25,7 +28,6 @@ public class GreetingScheduler implements ApplicationEventListener<ServiceStarte
                 .withIdentity(jobKey)
                 .usingJobData("name", "Harry")
                 .build();
-            // Trigger the job to run now, and then repeat every 40 seconds
             Trigger trigger = newTrigger()
                 .withIdentity(triggerKey)
                 .startNow()

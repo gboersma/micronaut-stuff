@@ -5,6 +5,7 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
@@ -14,6 +15,9 @@ public class GreetingJob implements Job {
         throws JobExecutionException {
         JobDataMap args = jobExecutionContext.getJobDetail().getJobDataMap();
         String name = args.getString("name") != null ? args.getString("name") : "world";
-        System.out.println("Hello " + name + ", from the greeting job!");
+        greetingBean.greet(name);
     }
+
+    @Inject
+    private GreetingBean greetingBean;
 }
