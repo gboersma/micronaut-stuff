@@ -19,7 +19,7 @@ Use the following dependency:
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-Check `samples` folder for examples of how to use.
+Check out the `sample` project for example of how to use.
 
 Future:
 * Mapping between Quartz and Micronaut properties, e.g. database connection properties.

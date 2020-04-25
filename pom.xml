@@ -9,6 +9,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>mquartz</module>
-        <module>samples/greeting</module>
+        <module>sample</module>
     </modules>
 </project>
