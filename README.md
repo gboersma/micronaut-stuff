@@ -9,6 +9,8 @@ co-ordination across multiple servers.
 
 Why use Quartz? Because it is solid, easily extensible, and everyone knows how to use it.
 
+Standard maven project: `mvn clean install` to build.
+
 Use the following dependency:
 
         <dependency>
