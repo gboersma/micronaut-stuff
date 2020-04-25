@@ -3,12 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>info.leadinglight.micronaut-quartz-scheduler</groupId>
-    <artifactId>micronaut-quartz-scheduler</artifactId>
+    <groupId>info.leadinglight.micronaut-components</groupId>
+    <artifactId>micronaut-components</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>mquartz</module>
-        <module>sample</module>
+        <module>bean-lookup</module>
+        <module>samples/sample-mquartz</module>
+        <module>samples/sample-bean-lookup</module>
     </modules>
 </project>

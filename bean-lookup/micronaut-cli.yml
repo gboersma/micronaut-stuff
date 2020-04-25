@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: bean.lookup
+---
+testFramework: junit
+sourceLanguage: java
