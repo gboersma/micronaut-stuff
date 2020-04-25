@@ -1,6 +1,6 @@
 package info.leadinglight.mquartz;
 
-import io.micronaut.context.ApplicationContext;
+import info.leadinglight.beanlookup.ApplicationContextLocator;
 import io.micronaut.context.exceptions.NoSuchBeanException;
 import org.quartz.Job;
 import org.slf4j.Logger;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 public class MicronautLocator {
     public static Job getJobBean(Class<? extends Job> jobClass) {
         try {
-            Job jobBean = applicationContext.getBean(jobClass);
+            Job jobBean = ApplicationContextLocator.getApplicationContext().getBean(jobClass);
             return jobBean;
         } catch (NoSuchBeanException e) {
             String msg = "Could not instantiate Micronaut bean for job class "
@@ -23,16 +23,6 @@ public class MicronautLocator {
             throw new JobException(msg, e);
         }
     }
-
-    public static ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
-    public static void setApplicationContext(ApplicationContext applicationContext) {
-        MicronautLocator.applicationContext = applicationContext;
-    }
-
-    private static ApplicationContext applicationContext;
 
     private static Logger logger = LoggerFactory.getLogger(MicronautLocator.class);
 }

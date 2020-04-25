@@ -16,7 +16,7 @@ public class EventHandler {
         // When we start up the application, we give the ApplicationContext to the BeanLocator.
         // This is the only way to get a handle to the ApplicationContext for non-bean classes.
         logger.info("Setting the application context on the ApplicationContextLocator...");
-        BeanLookup.setApplicationContext(applicationContext);
+        ApplicationContextLocator.setApplicationContext(applicationContext);
     }
 
     @Inject
