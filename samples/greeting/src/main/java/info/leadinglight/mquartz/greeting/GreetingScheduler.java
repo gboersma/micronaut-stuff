@@ -1,7 +1,7 @@
-package info.leadinglight.mjob.greeting;
+package info.leadinglight.mquartz.greeting;
 
-import info.leadinglight.mjob.scheduler.JobManager;
-import info.leadinglight.mjob.scheduler.QuartzBuilder;
+import info.leadinglight.mquartz.scheduler.JobManager;
+import info.leadinglight.mquartz.scheduler.QuartzBuilder;
 import io.micronaut.context.event.ApplicationEventListener;
 import io.micronaut.discovery.event.ServiceStartedEvent;
 import org.quartz.JobDetail;

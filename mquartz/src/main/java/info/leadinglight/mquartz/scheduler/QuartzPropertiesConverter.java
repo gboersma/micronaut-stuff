@@ -1,4 +1,4 @@
-package info.leadinglight.mjob.scheduler;
+package info.leadinglight.mquartz.scheduler;
 
 import io.micronaut.core.naming.NameUtils;
 

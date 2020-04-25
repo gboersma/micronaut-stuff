@@ -1,4 +1,4 @@
-package info.leadinglight.mjob.greeting;
+package info.leadinglight.mquartz.greeting;
 
 import javax.inject.Singleton;
 

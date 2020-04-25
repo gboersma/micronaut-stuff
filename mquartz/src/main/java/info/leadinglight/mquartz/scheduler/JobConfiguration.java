@@ -1,7 +1,6 @@
-package info.leadinglight.mjob.scheduler;
+package info.leadinglight.mquartz.scheduler;
 
 import io.micronaut.context.annotation.ConfigurationProperties;
-import io.micronaut.core.convert.format.MapFormat;
 
 import java.util.Map;
 
