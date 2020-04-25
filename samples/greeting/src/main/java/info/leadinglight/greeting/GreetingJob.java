@@ -1,4 +1,4 @@
-package info.leadinglight.mquartz.greeting;
+package info.leadinglight.greeting;
 
 import org.quartz.Job;
 import org.quartz.JobDataMap;

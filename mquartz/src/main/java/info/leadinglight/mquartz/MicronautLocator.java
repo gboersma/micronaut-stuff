@@ -1,4 +1,4 @@
-package info.leadinglight.mquartz.scheduler;
+package info.leadinglight.mquartz;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.exceptions.NoSuchBeanException;

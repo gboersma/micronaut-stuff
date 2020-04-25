@@ -1,4 +1,4 @@
-package info.leadinglight.mquartz.scheduler;
+package info.leadinglight.mquartz;
 
 import io.micronaut.core.naming.NameUtils;
 
@@ -56,7 +56,7 @@ public class QuartzPropertiesConverter {
         // Default value for jobFactory class must be the Micronaut Job Factory.
         String name = "org.quartz.scheduler.jobFactory.class";
         if (!names.contains(name)) {
-            properties.setProperty(name, "info.leadinglight.mjob.scheduler.MicronautJobFactory");
+            properties.setProperty(name, "info.leadinglight.mquartz.MicronautJobFactory");
         }
     }
 

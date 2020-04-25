@@ -1,4 +1,4 @@
-package info.leadinglight.mquartz.scheduler;
+package info.leadinglight.mquartz;
 
 public class JobException extends RuntimeException {
     public JobException() {

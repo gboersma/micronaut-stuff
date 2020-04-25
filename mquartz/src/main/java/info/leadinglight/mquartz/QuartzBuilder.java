@@ -1,4 +1,4 @@
-package info.leadinglight.mquartz.scheduler;
+package info.leadinglight.mquartz;
 
 import org.quartz.Job;
 import org.quartz.JobBuilder;

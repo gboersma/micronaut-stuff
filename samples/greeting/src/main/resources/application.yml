@@ -3,9 +3,9 @@ micronaut:
     name: greeting
 datasources:
   default:
-    url: jdbc:mariadb://localhost/mjob
-    username: mjob
-    password: mjob
+    url: jdbc:mariadb://localhost/mquartz
+    username: mquartz
+    password: mquartz
     driverClassName: org.mariadb.jdbc.Driver
 jpa:
   default:
@@ -31,9 +31,9 @@ job:
         dataSource:
           quartzDataSource:
             driver: org.mariadb.jdbc.Driver
-            URL: jdbc:mariadb://localhost/mjob
-            user: mjob
-            password: mjob
+            URL: jdbc:mariadb://localhost/mquartz
+            user: mquartz
+            password: mquartz
             maxConnections: 8
         threadPool:
           class: org.quartz.simpl.SimpleThreadPool
