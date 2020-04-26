@@ -29,13 +29,11 @@ Library of helper and utility classes:
 * `ApplicationContextLocator`: Get access to Micronaut application context from non-Micronaut classes. 
 Usually required when integrating with third-party libraries. 
 A reference to the `ApplicationContext` is given to a Java (not Micronaut) singleton 
-when the application starts up. 
+when the application starts up.
+* `PropertiesUtil`: Utility class for working with Micronaut properties. 
 
 To run the sample:
 * Start the application, and do `curl http://localhost:8080/bean-lookup/bean` to have a bean
 display a message using the standard `@Inject` mechanism. Do a 
 `curl http://localhost:8080/bean-lookup/non-bean` to have a bean display the same message
 using the `ApplicationContextLocator`.  
-
-Future:
-* Utility class for working with Micronaut classes.

@@ -1,53 +1,28 @@
 package info.leadinglight.mquartz;
 
-import io.micronaut.core.naming.NameUtils;
+import info.leadinglight.mutils.PropertiesUtil;
 
-import java.util.HashMap;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+@Singleton
 public class QuartzPropertiesConverter {
-    public Properties getPropertiesFromConfigMap(Map<String,Object> configMap) {
-        Map<String,String> flattenedConfigMap = new HashMap<>();
-        flattenConfigMap(flattenedConfigMap, null, configMap);
-        Properties properties = convertPropertyNames(flattenedConfigMap);
+    public Properties getPropertiesFromConfig() {
+        Map<String,Object> quartzConfig = jobConfig.getQuartz();
+        Properties properties = PropertiesUtil.getPropertiesFromConfigMap(quartzConfig, true);
+        fixPropertyNames(properties);
         addDefaultProperties(properties);
         mapOtherProperties(properties);
         return properties;
     }
 
-    private void flattenConfigMap(Map<String,String> flattenedMap, String prefix, Map<String,Object> map) {
-        for (String key: map.keySet()) {
-            Object value = map.get(key);
-            String keyPrefix = prefix != null ? prefix + "." + key : key;
-            if (value instanceof Map) {
-                // Recursively traverse the sub-map
-                flattenConfigMap(flattenedMap, keyPrefix, (Map)value);
-            } else {
-                flattenedMap.put(keyPrefix, value.toString());
-            }
-        }
-    }
-
-    private Properties convertPropertyNames(Map<String,String> map) {
-        Properties properties = new Properties();
-        for (String key: map.keySet()) {
-            String value = map.get(key);
-            String correctKey = fixKey(key);
-            properties.setProperty(correctKey, value);
-        }
-        return properties;
-    }
-
-    private String fixKey(String key) {
-        // TODO Need to check for other Quartz properties that are not in standard form.
-        String correctKey = NameUtils.camelCase(key);
-        if (correctKey.equals("org.quartz.dataSource.quartzDataSource.url")) {
-            return "org.quartz.dataSource.quartzDataSource.URL";
-        } else {
-            return correctKey;
-        }
+    private void fixPropertyNames(Properties properties) {
+        properties.setProperty("org.quartz.dataSource.quartzDataSource.URL",
+            properties.getProperty("org.quartz.dataSource.quartzDataSource.url"));
+        properties.remove("org.quartz.dataSource.quartzDataSource.url");
     }
 
     private void addDefaultProperties(Properties properties) {
@@ -64,4 +39,7 @@ public class QuartzPropertiesConverter {
         // TODO Automatically map the datasource properties from a datasource with the same name.
         //  Pick up the name of the jobStore.dataSource property.
     }
+
+    @Inject
+    private JobConfiguration jobConfig;
 }

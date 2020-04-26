@@ -1,7 +1,5 @@
 package info.leadinglight.mquartz;
 
-import info.leadinglight.beanlookup.ApplicationContextLocator;
-import io.micronaut.context.exceptions.NoSuchBeanException;
 import org.quartz.Job;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;

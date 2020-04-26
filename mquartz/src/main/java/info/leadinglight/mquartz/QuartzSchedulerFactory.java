@@ -14,9 +14,7 @@ import java.util.Properties;
 public class QuartzSchedulerFactory {
     public Scheduler getScheduler() {
         try {
-            Map<String,Object> quartzConfig = jobConfig.getQuartz();
-            QuartzPropertiesConverter quartzPropertiesConverter = new QuartzPropertiesConverter();
-            Properties properties = quartzPropertiesConverter.getPropertiesFromConfigMap(quartzConfig);
+            Properties properties = quartzPropertiesConverter.getPropertiesFromConfig();
             SchedulerFactory factory = new StdSchedulerFactory(properties);
             Scheduler scheduler = factory.getScheduler();
             return scheduler;
@@ -26,5 +24,5 @@ public class QuartzSchedulerFactory {
     }
 
     @Inject
-    private JobConfiguration jobConfig;
+    private QuartzPropertiesConverter quartzPropertiesConverter;
 }

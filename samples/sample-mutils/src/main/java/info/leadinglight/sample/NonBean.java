@@ -1,6 +1,6 @@
 package info.leadinglight.sample;
 
-import info.leadinglight.beanlookup.ApplicationContextLocator;
+import info.leadinglight.mutils.ApplicationContextLocator;
 
 public class NonBean {
     public String greeting() {

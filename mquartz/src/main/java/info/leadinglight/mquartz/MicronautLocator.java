@@ -1,6 +1,6 @@
 package info.leadinglight.mquartz;
 
-import info.leadinglight.beanlookup.ApplicationContextLocator;
+import info.leadinglight.mutils.ApplicationContextLocator;
 import io.micronaut.context.exceptions.NoSuchBeanException;
 import org.quartz.Job;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package info.leadinglight.beanlookup;
+package info.leadinglight.mutils;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.runtime.event.annotation.EventListener;
