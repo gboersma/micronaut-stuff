@@ -20,19 +20,17 @@ public class QuartzPropertiesConverter {
     }
 
     private void fixPropertyNames(Properties properties) {
-        properties.setProperty("org.quartz.dataSource.quartzDataSource.URL",
-            properties.getProperty("org.quartz.dataSource.quartzDataSource.url"));
-        properties.remove("org.quartz.dataSource.quartzDataSource.url");
+        PropertiesUtil.renameKey(properties,
+            "org.quartz.dataSource.quartzDataSource.url",
+            "org.quartz.dataSource.quartzDataSource.URL");
     }
 
     private void addDefaultProperties(Properties properties) {
         // TODO Other defaults.
-        Set<String> names = properties.stringPropertyNames();
         // Default value for jobFactory class must be the Micronaut Job Factory.
-        String name = "org.quartz.scheduler.jobFactory.class";
-        if (!names.contains(name)) {
-            properties.setProperty(name, "info.leadinglight.mquartz.MicronautJobFactory");
-        }
+        PropertiesUtil.setPropertyIfNotDefined(properties,
+            "org.quartz.scheduler.jobFactory.class",
+            "info.leadinglight.mquartz.MicronautJobFactory");
     }
 
     private void mapOtherProperties(Properties properties) {

@@ -21,6 +21,20 @@ public class PropertiesUtil {
         return properties;
     }
 
+    public static void renameKey(Properties properties, String oldKey, String newKey) {
+        properties.setProperty(newKey, properties.getProperty(oldKey));
+        properties.remove(oldKey);
+    }
+
+    public static boolean setPropertyIfNotDefined(Properties properties, String key, String value) {
+        if (!properties.containsKey(key)) {
+            properties.setProperty(key, value);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * When getting properties from Micronaut as a generic map, the properties
      * are returned as a map of Name --> Property value OR embedded map.
