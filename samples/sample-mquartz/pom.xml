@@ -35,7 +35,7 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>info.leadinglight.micronaut-components</groupId>
+            <groupId>info.leadinglight.micronaut-stuff</groupId>
             <artifactId>mquartz</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
